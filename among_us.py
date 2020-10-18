@@ -15,7 +15,7 @@ def create_impostors(players_list, impostors_amount_):
     # выбираем несколько случайных участников, если предателей больше одного
     else:
         impostors_indexes = []
-        while len(impostors_indexes) < impostors_amount:
+        while len(impostors_indexes) < impostors_amount_:
             index_ = random.randint(0, len(players_list) - 1)
             if index_ not in impostors_indexes:
                 impostors_indexes.append(index_)
