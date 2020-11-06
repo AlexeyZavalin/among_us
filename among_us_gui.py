@@ -112,8 +112,7 @@ def main():
                     done = True
 
                 # если кликнули ЛКМ
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    if event.button == 1:
+                elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                         picked_player = None
                         for i, player in enumerate(players):
                             # проверили, кликнули ли мы по игроку
@@ -128,7 +127,7 @@ def main():
                                     player_to_kill = index
                                     break
                             # убираем игрока из списка
-                            if player_to_kill is not None:
+                            if player_to_kill:
                                 if players[player_to_kill]['is_impostor']:
                                     impostors_amount = impostors_amount - 1
                                     screen.fill(color)
