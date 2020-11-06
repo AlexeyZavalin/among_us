@@ -121,25 +121,19 @@ def main():
 
                         if picked_player:
                             click_on_player = True
-                            player_to_kill = None
-                            for index, player in enumerate(players):
-                                if player['id'] == picked_player['id']:
-                                    player_to_kill = index
-                                    break
                             # убираем игрока из списка
-                            if player_to_kill:
-                                if players[player_to_kill]['is_impostor']:
-                                    impostors_amount = impostors_amount - 1
-                                    screen.fill(color)
-                                    draw_text(screen, 'Этот игрок оказался предателем!')
-                                    pygame.display.update()
-                                    time.sleep(2)
-                                else:
-                                    screen.fill(color)
-                                    draw_text(screen, 'Этот игрок не был предателем!')
-                                    pygame.display.update()
-                                    time.sleep(2)
-                                del players[player_to_kill]
+                            players = list(filter(lambda player: player['id'] != picked_player['id'], players))
+                            if picked_player['is_impostor']:
+                                impostors_amount = impostors_amount - 1
+                                screen.fill(color)
+                                draw_text(screen, 'Этот игрок оказался предателем!')
+                                pygame.display.update()
+                                time.sleep(2)
+                            else:
+                                screen.fill(color)
+                                draw_text(screen, 'Этот игрок не был предателем!')
+                                pygame.display.update()
+                                time.sleep(2)
     # Проверка итогов игры
     if impostors_amount == 0:
         screen.fill(color)
