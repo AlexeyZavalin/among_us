@@ -94,7 +94,7 @@ def main():
         # создаем экран и заполняем его объектами
         screen.fill(color)
         rects = []
-        for i, player in enumerate(players):
+        for player in players:
             player_img = pygame.image.load(f'imgs/{player["color"]}.png')
             player_rect = player_img.get_rect(bottomleft=player['coords'])
             rects.append(player_rect)
